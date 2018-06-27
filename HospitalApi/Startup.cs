@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Services;
 using Services.Factories;
 using Services.Factories.Interfaces;
@@ -33,7 +34,7 @@ namespace HospitalApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            
+
 
             var connection = @"Server=(localdb)\mssqllocaldb;Database=HospitalApiLocalDb;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
@@ -47,8 +48,13 @@ namespace HospitalApi
             services.AddScoped<IDiseaseService, DiseaseService>();
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(options =>
+                    {
+                        options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                    });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -33,9 +33,19 @@ namespace Services
             return (await _symptomRepository.AllAsync()).Select(s => _symptomFactory.Transform(s)).ToList();
         }
 
+        public async Task<List<SymptomDTO>> GetGreatestSymptomsAsync()
+        {
+            return (await _symptomRepository.GreatestAsync()).Select(s => _symptomFactory.TransformWithDiseases(s)).ToList();
+        }
+
         public async Task<int> GetSymptomsCountAsync()
         {
             return await _symptomRepository.SymptomsCount();
+        }
+
+        public async Task<List<SymptomDTO>> GetSymptomsWithDiseasesAsync()
+        {
+            return (await _symptomRepository.AllWithDiseasesAsync()).Select(s => _symptomFactory.TransformWithDiseases(s)).ToList();
         }
     }
 }

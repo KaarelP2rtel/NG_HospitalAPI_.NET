@@ -7,5 +7,6 @@ namespace Services.Factories
     {
         SymptomDTO Transform(Symptom s);
         Symptom Transform(SymptomDTO dto);
+        SymptomDTO TransformWithDiseases(Symptom s);
     }
 }

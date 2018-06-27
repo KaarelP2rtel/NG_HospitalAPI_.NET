@@ -35,5 +35,11 @@ namespace HospitalApi.Controllers
         [HttpGet]
         [Route("count")]
         public async Task<IActionResult> GetCount() => Ok(new { Count= await _symptomService.GetSymptomsCountAsync() });
+        [HttpGet]
+        [Route("withdiseases")]
+        public async Task<IActionResult> GetWithDiseases() => Ok( await _symptomService.GetSymptomsWithDiseasesAsync());
+        [HttpGet]
+        [Route("greatest")]
+        public async Task<IActionResult> GetGreatestSymptoms() => Ok(await _symptomService.GetGreatestSymptomsAsync());
     }
 }

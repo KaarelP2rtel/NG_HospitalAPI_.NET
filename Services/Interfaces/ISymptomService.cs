@@ -11,5 +11,7 @@ namespace Services.Interfaces
         Task<List<SymptomDTO>> GetAllSymptomsAsync();
         Task<SymptomDTO> AddSymptomAsync(SymptomDTO s);
         Task<int> GetSymptomsCountAsync();
+        Task<List<SymptomDTO>> GetSymptomsWithDiseasesAsync();
+        Task<List<SymptomDTO>> GetGreatestSymptomsAsync();
     }
 }
