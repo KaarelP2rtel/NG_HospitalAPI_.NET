@@ -10,5 +10,6 @@ namespace Services.Interfaces
     {
         Task<List<SymptomDTO>> GetAllSymptomsAsync();
         Task<SymptomDTO> AddSymptomAsync(SymptomDTO s);
+        Task<int> GetSymptomsCountAsync();
     }
 }

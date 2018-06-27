@@ -32,5 +32,10 @@ namespace Services
         {
             return (await _symptomRepository.AllAsync()).Select(s => _symptomFactory.Transform(s)).ToList();
         }
+
+        public async Task<int> GetSymptomsCountAsync()
+        {
+            return await _symptomRepository.SymptomsCount();
+        }
     }
 }

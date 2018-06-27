@@ -29,6 +29,9 @@ namespace DAL.Repositories
             return await _context.Symptoms.ToListAsync();
         }
 
-       
+        public async Task<int> SymptomsCount()
+        {
+            return await _context.Symptoms.CountAsync();
+        }
     }
 }

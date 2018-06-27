@@ -32,5 +32,8 @@ namespace HospitalApi.Controllers
             
             return Ok(await _symptomService.AddSymptomAsync(symptom));
         }
+        [HttpGet]
+        [Route("count")]
+        public async Task<IActionResult> GetCount() => Ok(new { Count= await _symptomService.GetSymptomsCountAsync() });
     }
 }

@@ -10,5 +10,7 @@ namespace Services.Interfaces
     {
         Task<List<DiseaseDTO>> GetallDiseasesAsync();
         Task<DiseaseDTO> AddDiseaseAsync(DiseaseDTO disease);
+        Task<List<DiseaseDTO>> GetGreatestDiseasesAsync();
+        Task<List<DiseaseDTO>> FindPossibleDiseases(List<SymptomDTO> symptoms);
     }
 }

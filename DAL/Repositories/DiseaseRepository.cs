@@ -3,6 +3,7 @@ using Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +42,18 @@ namespace DAL.Repositories
                 .Include(d => d.DiseaseSymptoms)
                     .ThenInclude(ds => ds.Symptom)
                 .SingleOrDefaultAsync(d => d.Id == id);
+        }
+
+        public async Task<List<Disease>> GreatestDiseasesAsync()
+        {
+            return await _context
+                .Diseases
+                .Include(d => d.DiseaseSymptoms)
+                    .ThenInclude(ds => ds.Symptom)
+                .OrderBy(d => d.DiseaseSymptoms.Count)
+                .ThenBy(d => d.Name)
+                .Take(3)
+                .ToListAsync();
         }
     }
 }

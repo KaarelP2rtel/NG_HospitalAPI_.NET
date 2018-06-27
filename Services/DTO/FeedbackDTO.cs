@@ -9,12 +9,16 @@ namespace Services.DTO
     {
         public FeedbackDTO(params string[] messages)
         {
-            Messages = messages.Select(m => new MessageDTO {Message = m });
+            AddMessages(messages);
         }
 
-        public IEnumerable<MessageDTO> Messages { get; set; }
+        public List<MessageDTO> Messages { get; set; } = new List<MessageDTO>();
+        public void AddMessages(params string[] messages)
+        {
+            Messages.AddRange(messages.Select(m => new MessageDTO { Message = m }));
+        }
     }
-
+    
     public class MessageDTO
     {
         public string Message { get; set; }

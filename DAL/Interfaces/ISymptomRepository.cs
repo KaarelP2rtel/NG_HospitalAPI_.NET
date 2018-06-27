@@ -10,7 +10,6 @@ namespace DAL.Interfaces
     {
         Task<List<Symptom>> AllAsync();
         Task<Symptom> AddAsync(Symptom symptom);
-        
-        
+        Task<int> SymptomsCount();
     }
 }

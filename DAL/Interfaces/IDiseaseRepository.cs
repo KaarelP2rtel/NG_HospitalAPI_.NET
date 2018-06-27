@@ -11,5 +11,6 @@ namespace DAL.Interfaces
         Task<List<Disease>> AllAsync();
         Task<Disease> AddAsync(Disease d);
         Task<Disease> FindWithSymptomsAsync(int id);
+        Task<List<Disease>> GreatestDiseasesAsync();
     }
 }
