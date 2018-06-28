@@ -25,7 +25,7 @@ namespace HospitalApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] DiseaseDTO disease)
         {
-            if (disease?.Id != null) return BadRequest(new FeedbackDTO("ID can not be set when posting"));
+            if (disease.Id != null) return BadRequest(new FeedbackDTO("ID can not be set when posting"));
             
             if (disease?.Symptoms == null || disease.Symptoms.Count < 1) return BadRequest(new FeedbackDTO("Disease must have symptoms"));
             if (!disease.Symptoms.TrueForAll(s => s.Id!=null)) return BadRequest(new FeedbackDTO("Symptoms must have IDs"));
@@ -40,10 +40,11 @@ namespace HospitalApi.Controllers
 
         [HttpPost]
         [Route("find")]
+        
         public async Task<IActionResult> Find([FromBody] List<SymptomDTO> symptoms)
         {
             if (!symptoms.TrueForAll(s => s.Id != null)) return BadRequest(new FeedbackDTO("Id must be set when posting"));
             return Ok(await _diseaseService.FindPossibleDiseases(symptoms));
         }
     }
-}
+}   

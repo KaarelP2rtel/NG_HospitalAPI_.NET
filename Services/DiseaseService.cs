@@ -31,8 +31,10 @@ namespace Services
 
         public async Task<List<DiseaseDTO>> FindPossibleDiseases(List<SymptomDTO> symptoms)
         {
+
             #region Code that needs refactoring
             var allDiseases = (await GetallDiseasesAsync());
+
             var findResults = new List<FindResult>();
 
             foreach (var disease in allDiseases)

@@ -47,6 +47,8 @@ namespace HospitalApi
             services.AddScoped<IDiseaseFactory, DiseaseFactory>();
             services.AddScoped<IDiseaseService, DiseaseService>();
 
+            services.AddCors();
+
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)

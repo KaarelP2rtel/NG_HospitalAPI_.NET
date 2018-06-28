@@ -8,8 +8,8 @@ namespace Services.DTO
     public class SymptomDTO
     {
         public int? Id { get; set; }
-        [Required]
-        [MinLength(3)]
+        
+        
         public string Name { get; set; }
 
         public List<DiseaseDTO> Diseases { get; set; }

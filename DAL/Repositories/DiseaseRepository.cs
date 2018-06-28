@@ -50,7 +50,7 @@ namespace DAL.Repositories
                 .Diseases
                 .Include(d => d.DiseaseSymptoms)
                     .ThenInclude(ds => ds.Symptom)
-                .OrderBy(d => d.DiseaseSymptoms.Count)
+                .OrderByDescending(d => d.DiseaseSymptoms.Count)
                 .ThenBy(d => d.Name)
                 .Take(3)
                 .ToListAsync();

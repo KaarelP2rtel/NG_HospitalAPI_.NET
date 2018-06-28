@@ -29,6 +29,7 @@ namespace HospitalApi.Controllers
         {
             
             if (symptom?.Id != null) return BadRequest(new FeedbackDTO("Id Can not be set when posting"));
+            if (symptom.Name == null) return BadRequest(new FeedbackDTO("Symptom must have a name"));
             
             return Ok(await _symptomService.AddSymptomAsync(symptom));
         }
